@@ -60,24 +60,25 @@ export class HomePage {
         bigText: true    
     })
 
-    this.verificarActualizacionDeDatosRemotosEnBackground() //Verificaremos los datos de la BD remota cada 10 segundos
-    this.insertIdMedicoToken()
-
-    //Identificar de que plataforma viene para poner un boton de recarga en el caso de iOS
-    if (this.plt.is('ios')) {
-        this.isIosDevice=true;
-    }
-
-
 
     this.uniqueDeviceID.get()
   .then((uuid: any) => {
     console.log("UUID Nuevo: "+uuid)
     localStorage.setItem("UUID_Phone",uuid);
+
+
+    this.verificarActualizacionDeDatosRemotosEnBackground() //Verificaremos los datos de la BD remota cada 10 segundos
+    this.insertIdMedicoToken()
+
+    
   })
   .catch((error: any) => {
     console.log("ERROR Nuevo: "+error)
   });
+
+ 
+
+
 
   
   } //Fin del Constructor
